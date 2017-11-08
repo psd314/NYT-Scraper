@@ -25,7 +25,7 @@ class Main extends Component {
   	retrieveSavedArticles = () => {
   		axios
   			.get('api/retrieve')
-  			.then((res) => this.setState({savedArticles: res.data}))
+  			.then((res) => this.setState({savedArticles: res.data})) //push saved articles??
   			.catch((err) => console.error(err));  			
   	}
 
@@ -67,11 +67,11 @@ class Main extends Component {
 		axios
 			.delete('/api/deleteArticle/'+ articleInfo._id)
 			.then(res => {
+				console.log(this.state.savedArticles);
 				const temp = this.state.savedArticles.filter(result => {
-						return result.web_url !== articleInfo.web_url;
+						return result._id !== articleInfo._id;
 					});
 					this.setState({savedArticles: temp});
-					this.retrieveSavedArticles();
 			})
 			.catch(err => console.log(err));
 	}
@@ -105,7 +105,7 @@ class Main extends Component {
 				<Saved>
 					{!this.state.savedArticles.length ? (<h3>No saved articles at this time</h3>):
 						(<QueryList>
-						{this.state.savedArticles.map( (result, index) => {
+							{this.state.savedArticles.map( (result, index) => {
 								return (
 									<SavedListItem 
 										key={result.title}
