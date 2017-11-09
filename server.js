@@ -16,7 +16,7 @@ app.use(routes);
 mongoose.Promise = global.Promise;
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/nytimesReact" || "mongodb://heroku_tkw4flts:unpbbcekr66n2is7caou7fnuta@ds255265.mlab.com:55265/heroku_tkw4flts", 
+  process.env.MONGODB_URI || "mongodb://localhost/nytimesReact" || "mongodb://heroku_xx2wgz39:rp6pfkl0ql5pjmeguho6vanbuk@ds155325.mlab.com:55325/heroku_xx2wgz39", 
   {
     useMongoClient: true
   }
